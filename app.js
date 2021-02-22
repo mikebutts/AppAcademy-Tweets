@@ -5,9 +5,15 @@ const db = require('./config/keys').mongoURI;
 const port = process.env.PORT || 5000;
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
+const  passport = require('passport')
 const bodyParser = require('body-parser');
+
+//adding middleware
+app.use(passport.initialize());
+require('./config/passport')(passport)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 
 mongoose
